@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up | Robusta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+      <div class="tabContainer">
+        <div class="tabNav" role="tablist">
+          <ul>
+            <li role="tab" id="signup-nav">
+              <a href="#">Sign up</a>
+            </li>
+            <li role="tab" id="signin-nav">
+              <a href="#">Sign in</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tabContent">
+
+          
+          <form id="signup-form" action="">
+            <div class="form-group">
+              <label for="name">
+                Full Name
+                <input type="text" id="name" autocomplete="name" required/>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="email">
+                Email
+                <input type="email" id="email" autocomplete="email" required/>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="username">
+                Username
+                <input type="text" id="signup-username" required/>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="password">
+                Password
+                <input type="password" id="signup-password" required minlength="4"/>
+              </label>
+            </div>
+            <button type="submit" value="submit" id="signup-submit">Signup</button>
+          </form>
+        
+
+      
+          <form id="signin-form" action=""> 
+            <div class="form-group">
+              <label for="username">
+                Username
+                <input type="text" id="username" required />
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="password">
+                Password
+                <input type="password" id="password" required />
+              </label>
+            </div>
+            <input type="submit" value="submit" />
+          </form>
+          
+          <!-- <div>loading ...</div> -->
+      
+        </div>
+      </div>
+    </main>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
