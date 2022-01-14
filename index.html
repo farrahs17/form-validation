@@ -8,69 +8,59 @@
 </head>
 <body>
     <main>
-      <div class="tabContainer">
-        <div class="tabNav" role="tablist">
-          <ul>
-            <li role="tab" id="signup-nav">
-              <a href="#">Sign up</a>
-            </li>
-            <li role="tab" id="signin-nav">
-              <a href="#">Sign in</a>
-            </li>
-          </ul>
-        </div>
+      <div class="container">
 
-        <div class="tabContent">
-
-          
+        <div class="content">
+      
           <form id="signup-form" action="">
             <div class="form-group">
-              <label for="name">
-                Full Name
-                <input type="text" id="name" autocomplete="name" required/>
-              </label>
+              
+              <input aria-label="Full Name" placeholder="Full Name" type="text" id="name" autocomplete="name" required/>
+              
             </div>
             <div class="form-group">
-              <label for="email">
-                Email
-                <input type="email" id="email" autocomplete="email" required/>
-              </label>
+              
+              <input aria-label="Email" placeholder="Email" type="email" id="email" autocomplete="email" required/>
+              
             </div>
             <div class="form-group">
-              <label for="username">
-                Username
-                <input type="text" id="signup-username" required/>
-              </label>
+              
+              <input aria-label="Username" placeholder="Username" type="text" id="signup-username" required/>
+              
             </div>
             <div class="form-group">
-              <label for="password">
-                Password
-                <input type="password" id="signup-password" required minlength="4"/>
-              </label>
+              
+              <input aria-label="Password" placeholder="Password" type="password" id="signup-password" required minlength="4"/>
+              
             </div>
-            <button type="submit" value="submit" id="signup-submit">Signup</button>
+            <button type="submit" value="submit" class="btn" id="signup-submit">Sign up</button>
+            <div class="member">
+              <p>Already a member?</p>
+              <button type="button" id="signin-nav">Sign in</button>
+            </div>
           </form>
-        
-
       
           <form id="signin-form" action=""> 
             <div class="form-group">
-              <label for="username">
-                Username
-                <input type="text" id="username" required />
-              </label>
+
+                <input aria-label="Username" placeholder="Username" type="text" id="username" required />
+
             </div>
             <div class="form-group">
-              <label for="password">
-                Password
-                <input type="password" id="password" required />
-              </label>
+
+                <input aria-label="Password" placeholder="Password" type="password" id="password" required />
             </div>
-            <input type="submit" value="submit" />
+            <button class="btn" type="submit" value="submit">Sign in</button>
+            <div class="member">
+              <p>Not a member?</p>
+              <button type="button" id="signup-nav">Sign up</button>
+            </div>
           </form>
           
-          <!-- <div>loading ...</div> -->
-      
+        <div class="loader" ></div>
+        <div id="messageContainer">
+          <p id="message"></p>
+        </div>
         </div>
       </div>
     </main>

@@ -2,19 +2,33 @@ var API_URL = 'https://private-b2e6827-robustatask.apiary-mock.com';
 var API_PATH_SIGNUP = '/auth/register';
 var API_PATH_SIGNIN = '/auth/login';
 
-let loading = false;
+//// On load set up
+
+let loader = document.getElementsByClassName("loader")[0];
+loader.style.display = "none";
+
+let signinForm = document.getElementById("signin-form");
+let signupForm = document.getElementById("signup-form");
+let messageContainer = document.getElementById("messageContainer");
+messageContainer.style.display = "none";
+let message = document.getElementById("message");
+
+//// Switching between sign in and sign up
+
 document.getElementById("signup-nav").onclick = () => {
-    document.getElementById("signin-form").style.display = "none";
-    document.getElementById("signup-form").style.display = "block";
+    signinForm.style.display = "none";
+    signupForm.style.display = "flex";
 
 }
 
 document.getElementById("signin-nav").onclick = () => {
-    document.getElementById("signup-form").style.display = "none";
-    document.getElementById("signin-form").style.display = "block";
+    signupForm.style.display = "none";
+    signinForm.style.display = "flex";
 
 }
 
+
+//// Handling sign up inputs
 let nameInput;
 document.getElementById("name").addEventListener('input', (e) => {
     nameInput = e.target.value;
@@ -35,9 +49,13 @@ document.getElementById("signup-password").addEventListener('input', (e) =>{
     signupPassword = e.target.value;
 })
 
+
+//// Handling sign up submission
+
 function handleSignup(e) {
     e.preventDefault();
-    loading = true;
+    loader.style.display = "block";
+    signupForm.style.display = "none";
     const signupData = {
         name: nameInput,
         email,
@@ -49,19 +67,9 @@ function handleSignup(e) {
 }
 document.getElementById("signup-form").addEventListener('submit', handleSignup)
 
-function validate(formType, data) {
-    if (formType === "signup") {
-        if (data.name !== null || data.name !== "" || data.name !== " ") {
-            console.log('validated')
-        } else {
-            console.log("not validated")
-        }
 
-    }
-}
-
-
-let uername; 
+//// Handling sign in inputs
+let username; 
 document.getElementById("username").addEventListener('input', (e) =>{ 
     username = e.target.value;
 })
@@ -71,9 +79,11 @@ document.getElementById("password").addEventListener('input', (e) =>{
     password = e.target.value;
 })
 
-function handleSignin(params) {
-     e.preventDefault();
-    loading = true;
+//// Handling sign in submission
+function handleSignin(e) {
+    e.preventDefault();
+    loader.style.display = "block";
+    signinForm.style.display = "none";
     const signinData = {
         username,
         password
@@ -83,24 +93,46 @@ function handleSignin(params) {
 
 document.getElementById("signin-form").addEventListener('submit', handleSignin);
 
-async function  submitForm(formType, data) {
+//// Submitting forms and sending data by axios
+async function submitForm(formType, data) {
     if (formType === "signup") {
         try {
             let res = await axios.post(`${API_URL}${API_PATH_SIGNUP}`, data);
             console.log(res)
-            loading = false;
+            loader.style.display = "none";
+            handleSuccess("signup");
         } catch (error) {
             console.log(error)
+            handleError();
         }
         
     } else if (formType === "signin") {
         try {
             let res = await axios.post(`${API_URL}${API_PATH_SIGNIN}`, data);
             console.log(res)
-            loading = false;
+            handleSuccess("signin");
         } catch (error) {
             console.log(error)
+            handleError();
         }
     }
 
+}
+
+//// Handling success case
+function handleSuccess (formType) {
+    if(formType === "signup") {
+        message.innerHTML= "Sign Up Successful";
+        messageContainer.style.display = "flex";
+    } else {
+        message.innerHTML= "Sign In Successful";
+        messageContainer.style.display = "flex";
+
+    }
+}
+
+//// Handling error
+function handleError() {
+    message.innerHTML= "An error occurred. Please try again later.";
+    messageContainer.style.display = "flex";
 }

@@ -1,3 +1,169 @@
-input:invalid {
-    border: 1px solid red;
+* {
+ box-sizing: border-box;  
+ margin: 0; 
+ font-family: Arial, Helvetica, sans-serif;
 }
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+main::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url(./public/assets/pexels-anni-roenkae-2832432.jpg);
+    background-color: #feecf18e;
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+.container {
+    margin: 0 auto;
+    width: 40%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    background-color: #AE8CA3;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 3%;
+    justify-content: center;
+}
+
+form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: #0B3954;   
+}
+
+form input {
+    background-color: #AE8CA3;
+    color: #553555;
+    width: 100%;
+    border-style: none;
+    padding: 3%;
+}
+
+form input::placeholder {
+    color: #553555;
+    font-weight: 700;
+}
+
+form input:focus, form input:focus-visible, form button:focus-visible {
+    border: 2px solid #566e92;
+    outline: none;
+}
+
+
+#signin-form {
+    display: none;
+}
+
+.btn {
+    background-color: #566e92;
+    color: #AE8CA3;
+    font-weight: 800;
+    border-style: none;
+    border-radius: 15px;
+    padding: 3%;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.member {
+    display: flex;
+}
+
+.member button {
+    background-color: transparent;
+    border-style: none;
+    color:#553555;
+    font-weight: 400;
+}
+
+.member button:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #553555;
+}
+
+#messageContainer {
+    color: #0B3954;
+    margin: 0 auto;
+    align-items: center;
+}
+
+
+/* Loader by Luke Haas https://projects.lukehaas.me/css-loaders/ */
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(86,110,146, 0.2);
+  border-right: 1.1em solid rgba(86,110,146, 0.2);
+  border-bottom: 1.1em solid rgba(86,110,146, 0.2);
+  border-left: 1.1em solid #566e92;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
